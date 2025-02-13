@@ -1,0 +1,47 @@
+<div class="w-full max-w-md p-4 rounded-lg text-white">
+    <h2 class="text-lg font-semibold mb-4">Pending Trades</h2>
+    <div class="flex space-x-2 mb-4">
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">By the time</button>
+        <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">By the Price</button>
+        <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">Current</button>
+    </div>
+    
+    <div class="space-y-4">
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Asset</label>
+            <select class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                <option>EUR/JPY</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Open time</label>
+            <input type="datetime-local" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="2025-02-11T16:40:19">
+            <p class="text-gray-500 text-xs mt-1">Current time: 2025-02-11 16:38:58</p>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Payout</label>
+            <div class="relative">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 pr-8" value="60" min="0" max="100">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Timeframe</label>
+            <div class="flex space-x-2">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="0">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="1">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="0">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Amount</label>
+            <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="1500">
+        </div>
+
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg font-medium mt-4">Place Trade</button>
+    </div>
+</div>

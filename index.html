@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trades Interface</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            max-width: 420px;
+            height: 100vh;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .mobile-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        #main-content {
+            height: calc(100% - 120px);
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container bg-gray-900 text-white">
+        <div id="top-nav"></div>
+        <!-- Restore original single container -->
+        <div id="main-content" class="h-full overflow-y-auto"></div>
+        <div id="bottom-nav"></div>
+    </div>
+
+    <!-- Replace welcome template with forex graph template -->
+    <template id="welcome-template">
+        <div class="p-4 h-full flex flex-col">
+            <!-- Graph Header -->
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-400">EUR/USD</h2>
+                    <p class="text-gray-400 text-sm">1.0921 <span class="text-green-500">+0.05%</span></p>
+                </div>
+                <div class="space-x-2">
+                    <button class="px-3 py-1 bg-gray-800 rounded-md text-sm hover:bg-gray-700">1H</button>
+                    <button class="px-3 py-1 bg-gray-800 rounded-md text-sm hover:bg-gray-700">1D</button>
+                    <button class="px-3 py-1 bg-blue-500 rounded-md text-sm hover:bg-blue-600">1W</button>
+                </div>
+            </div>
+
+            <!-- Graph Canvas with fixed height -->
+            <div class="bg-gray-800/50 rounded-2xl p-4 h-56">
+                <canvas id="forexChart" class="w-full h-full"></canvas>
+            </div>
+
+            <!-- Trading Actions -->
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <button class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors">
+                    Buy
+                </button>
+                <button class="bg-red-500 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-red-600 transition-colors">
+                    Sell
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Add Chart.js and forex scripts before other scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/forex-state.js"></script>
+    <script src="js/forex-chart.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/account-dropdown.js"></script>
+    <script>
+        function initializeForexChart() {
+            const ctx = document.getElementById('forexChart');
+            if (!ctx) return;
+
+            const data = {
+                labels: Array.from({length: 20}, (_, i) => i),
+                datasets: [{
+                    label: 'EUR/USD',
+                    data: Array.from({length: 20}, () => 1.09 + (Math.random() * 0.02 - 0.01)),
+                    borderColor: 'transparent', // remove chart line
+                    borderWidth: 0,             // no line width
+                    pointRadius: 0,             // hide points
+                    fill: false,
+                    tension: 0
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { 
+                            display: true, // show bottom axis values
+                            ticks: { color: '#9ca3af' },
+                            grid: { display: false }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#9ca3af' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update initialization function to include chart
+        async function initializeComponents() {
+            try {
+                // Load top nav
+                const topNavResponse = await fetch('components/top-nav.html');
+                const topNavHtml = await topNavResponse.text();
+                document.getElementById('top-nav').innerHTML = topNavHtml;
+
+                // Load bottom nav
+                const bottomNavResponse = await fetch('components/bottom-nav.html');
+                const bottomNavHtml = await bottomNavResponse.text();
+                document.getElementById('bottom-nav').innerHTML = bottomNavHtml;
+
+                // Initialize dropdown after components are loaded
+                console.log('Components loaded, initializing dropdown...');
+                initializeAccountDropdown();
+
+                // Show welcome template content
+                const template = document.getElementById('welcome-template');
+                document.getElementById('main-content').innerHTML = template.innerHTML;
+                
+                // Initialize chart
+                initializeForexChart();
+            } catch (error) {
+                console.error('Error initializing components:', error);
+            }
+        }
+
+        // Start initialization
+        initializeComponents();
+    </script>
+</body>
+</html>

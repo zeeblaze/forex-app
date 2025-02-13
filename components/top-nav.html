@@ -1,0 +1,100 @@
+<nav class="flex justify-between items-center p-4 bg-gray-900/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
+    <div class="flex items-center space-x-3">
+        <!-- Profile Icon -->
+        <button class="relative" aria-label="Profile status">
+            <div class="w-8 h-8 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors"></div>
+            <div class="w-2 h-2 bg-green-500 rounded-full absolute top-0 right-0" aria-hidden="true"></div>
+        </button>
+        <!-- Percentage -->
+        <div class="bg-gray-800 px-2 py-1 rounded-md text-xs hover:bg-gray-700 transition-colors cursor-pointer">
+            25%
+        </div>
+        <!-- Gift Icon -->
+        <button class="bg-gray-800 p-1.5 rounded-md hover:bg-gray-700 transition-colors" aria-label="Gift options">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4M12 4v16m8-8l-4-4m0 8l4-4"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Account Dropdown -->
+    <div class="flex items-center space-x-3">
+        <div class="relative">
+            <button class="bg-gray-800 px-3 py-2 rounded-md flex items-center space-x-2 hover:bg-gray-700 transition-colors dropdown-toggle" 
+                    aria-expanded="false" 
+                    aria-controls="dropModal"
+                    id="accountDropdown">
+                <div>
+                    <span class="text-xs text-gray-400 account-type">QT Real NGN</span>
+                    <span class="text-lg font-medium account-balance">0</span>
+                </div>
+                <span class="bg-gray-700 p-1 rounded-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </span>
+            </button>
+
+            <!-- Modal -->
+            <div id="dropModal" class="hidden absolute right-0 mt-1 w-72 bg-gray-800 rounded-lg shadow-lg z-50 flex flex-col max-h-[calc(100vh-100px)]" role="menu">
+                <!-- Header -->
+                <div class="px-4 py-2 border-b border-gray-700 sticky top-0 bg-gray-800">
+                    <p class="text-xs text-gray-400">Select Account</p>
+                </div>
+                
+                <!-- Content -->
+                <div class="overflow-y-auto">
+                    <div class="p-2 space-y-2">
+                        <button class="w-full account-option hover:bg-gray-700 transition-colors" data-account-type="QT Demo" data-balance="$50,000">
+                            <div class="mb-2 mx-3 p-3 bg-gray-700/50 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <p class="text-xs text-gray-400">Quick Trading Demo</p>
+                                    <p class="text-lg font-semibold">$50,000</p>
+                                </div>
+                                <span class="text-2xl">🎓</span>
+                            </div>
+                        </button>
+                        <button class="w-full account-option hover:bg-gray-700 transition-colors" data-account-type="QT Real NGN" data-balance="₦0">
+                            <div class="mb-1 mx-2 p-2 bg-gray-700/50 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <p class="text-xs text-gray-400">Quick Trading Real</p>
+                                    <p class="text-base font-semibold">₦0</p>
+                                </div>
+                                <span class="text-xl">💰</span>
+                            </div>
+                        </button>
+                        
+                        <!-- Links with proper spacing -->
+                        <div class="space-y-2 pt-1">
+                            <a href="#" class="block w-full hover:bg-gray-700 transition-colors">
+                                <div class="p-2 bg-gray-700/50 rounded-lg flex justify-between items-center">
+                                    <p class="text-sm">Forex</p>
+                                    <span>▼</span>
+                                </div>
+                            </a>
+                            <a href="#" class="block w-full hover:bg-gray-700 transition-colors">
+                                <div class="p-2 bg-gray-700/50 rounded-lg flex justify-between items-center">
+                                    <p class="text-sm">My Safe</p>
+                                    <span class="bg-green-600 text-white px-2 py-0.5 text-xs rounded-lg">Open</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="p-3 border-t border-gray-700 text-center sticky bottom-0 bg-gray-800">
+                    <a href="/profile" class="inline-block bg-blue-500 text-white px-6 py-2 text-sm rounded-full hover:bg-blue-600 transition-colors">
+                        Profile »
+                    </a>
+                </div>
+            </div>
+        </div>
+        <button class="bg-green-600 p-2 rounded-md hover:bg-green-700 transition-colors" aria-label="Open wallet">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 0V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10h10"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 14h10"></path>
+            </svg>
+        </button>
+    </div>
+</nav>

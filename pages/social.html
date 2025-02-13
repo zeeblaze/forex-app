@@ -1,0 +1,73 @@
+<div class="p-4 h-full overflow-y-auto"> <!-- Added overflow and bottom padding -->
+    <h1 class="text-lg font-medium mb-4">Social Trading</h1>
+    
+    <div class="relative mb-6">
+        <button id="periodDropdown" data-dropdown="period" class="w-full py-2.5 bg-gray-800 rounded-lg font-medium text-sm flex justify-between items-center px-4">
+            <span id="selectedPeriod">Top ranked traders for 24h</span>
+            <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div id="periodMenu" class="hidden absolute w-full bg-gray-800 rounded-lg mt-2 shadow-lg z-10 py-1">
+            <button class="period-option w-full text-left px-4 py-2 text-sm hover:bg-gray-700" data-period="24h">Top ranked traders for 24h</button>
+            <button class="period-option w-full text-left px-4 py-2 text-sm hover:bg-gray-700" data-period="7d">Top ranked traders for 7 days</button>
+            <button class="period-option w-full text-left px-4 py-2 text-sm hover:bg-gray-700" data-period="30d">Top ranked traders for 30 days</button>
+            <button class="period-option w-full text-left px-4 py-2 text-sm hover:bg-gray-700" data-period="90d">Top ranked traders for 90 days</button>
+            <button class="period-option w-full text-left px-4 py-2 text-sm hover:bg-gray-700" data-period="1y">Top ranked traders for 1 year</button>
+        </div>
+    </div>
+
+    <div class="text-sm text-gray-400 mb-3">REAL TRADING</div>
+    
+    <div class="space-y-3 overflow-y-auto">
+        <div class="bg-gray-700 p-3 rounded-lg flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gray-600 rounded-full"></div>
+            <div class="flex-1">
+                <div class="font-medium">Tee Dubb</div>
+                <div class="text-xs text-gray-400">Number of trades: 343</div>
+                <div class="text-xs text-gray-400">Profitable trades: 51%</div>
+            </div>
+            <div class="text-green-400 font-medium">+₦21,054</div>
+        </div>
+
+        <div class="bg-gray-700 p-3 rounded-lg flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gray-600 rounded-full"></div>
+            <div class="flex-1">
+                <div class="font-medium">user91804907</div>
+                <div class="text-xs text-gray-400">Number of trades: 29</div>
+                <div class="text-xs text-gray-400">Profitable trades: 66%</div>
+            </div>
+            <div class="text-green-400 font-medium">+₦16,658.40</div>
+        </div>
+
+        <div class="bg-gray-700 p-3 rounded-lg flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gray-600 rounded-full"></div>
+            <div class="flex-1">
+                <div class="font-medium">Shivam</div>
+                <div class="text-xs text-gray-400">Number of trades: 23</div>
+                <div class="text-xs text-gray-400">Profitable trades: 61%</div>
+            </div>
+            <div class="text-green-400 font-medium">+₦8,215.96</div>
+        </div>
+
+        <div class="bg-gray-700 p-3 rounded-lg flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gray-600 rounded-full"></div>
+            <div class="flex-1">
+                <div class="font-medium">user82063622</div>
+                <div class="text-xs text-gray-400">Number of trades: 86</div>
+                <div class="text-xs text-gray-400">Profitable trades: 56%</div>
+            </div>
+            <div class="text-green-400 font-medium">+₦7,008.30</div>
+        </div>
+
+        <div class="bg-gray-700 p-3 rounded-lg flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gray-600 rounded-full"></div>
+            <div class="flex-1">
+                <div class="font-medium">user90438975</div>
+                <div class="text-xs text-gray-400">Number of trades: 343</div>
+                <div class="text-xs text-gray-400">Profitable trades: 56%</div>
+            </div>
+            <div class="text-green-400 font-medium">+₦6,484.19</div>
+        </div>
+    </div>
+</div>
