@@ -1,3 +1,9 @@
+// Initialize state object
+let navigationState = {
+    wasOnForexPage: false,
+    currentPage: 'forex'
+};
+
 function handleNavigation(navItem) {
     const targetPage = navItem.getAttribute('data-target');
     const isCurrentlyActive = navItem.classList.contains('text-blue-500');
@@ -25,6 +31,10 @@ async function loadPage(pageName) {
     const mainContent = document.getElementById('main-content');
     
     try {
+        // Update navigation state
+        navigationState.wasOnForexPage = navigationState.currentPage === 'forex';
+        navigationState.currentPage = pageName;
+
         if (pageName === 'forex') {
             const response = await fetch('components/forex-page.html');
             mainContent.innerHTML = await response.text();
@@ -68,3 +78,6 @@ window.addEventListener('load', () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = document.getElementById('welcome-template').innerHTML;
 });
+
+// Export if needed
+window.loadPage = loadPage;
