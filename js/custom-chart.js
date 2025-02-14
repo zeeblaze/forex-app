@@ -16,12 +16,12 @@ window.forexChart = {
                 "symbol": "BINANCE:BTCUSDT",
                 "interval": "D",
                 "theme": "dark",
-                "style": "1",
+                "style": "3",
                 "toolbar_bg": "#f1f3f6",
-                "hide_side_toolbar": false,
+                "hide_side_toolbar": true,
                 "allow_symbol_change": true,
                 "save_image": false,
-                "hideideas": true
+                "hideideas": true,
             });
         } catch (error) {
             console.error('Failed to initialize TradingView widget:', error);

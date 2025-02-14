@@ -14,17 +14,27 @@ function handleNavigation(navItem) {
         item.classList.add('text-gray-400');
     });
 
-    // If non-forex page already active, load welcome template into #main-content
-    if (isCurrentlyActive && targetPage !== 'forex') {
-        const template = document.getElementById('welcome-template');
-        document.getElementById('main-content').innerHTML = template.innerHTML;
+    // If clicking active item, deactivate it and show welcome template
+    if (isCurrentlyActive) {
+        loadWelcomeTemplate();
         return;
     }
 
-    // Activate clicked item and load content
+    // Otherwise, activate clicked item and load content
     navItem.classList.remove('text-gray-400');
     navItem.classList.add('text-blue-500', 'bg-gray-700');
     loadPage(targetPage);
+}
+
+function loadWelcomeTemplate() {
+    const template = document.getElementById('welcome-template');
+    if (template) {
+        document.getElementById('main-content').innerHTML = template.innerHTML;
+        // Reinitialize chart
+        if (window.forexChart && typeof window.forexChart.initialize === 'function') {
+            setTimeout(() => window.forexChart.initialize(), 100);
+        }
+    }
 }
 
 async function loadPage(pageName) {
@@ -36,24 +46,20 @@ async function loadPage(pageName) {
         navigationState.currentPage = pageName;
 
         if (pageName === 'forex') {
-            const response = await fetch('components/forex-page.html');
-            mainContent.innerHTML = await response.text();
-            
-            // Initialize chart using preserved state
-            if (window.forexChart && typeof window.forexChart.initialize === 'function') {
-                window.forexChart.initialize();
-            }
+            loadWelcomeTemplate();
         } else {
-            const response = await fetch(`pages/${pageName}.html`);
-            mainContent.innerHTML = await response.text();
+            try {
+                const response = await fetch(`pages/${pageName}.html`);
+                mainContent.innerHTML = await response.text();
+            } catch (error) {
+                console.error('Error loading page:', error);
+                mainContent.innerHTML = '<div class="p-4 text-center text-gray-400">Page not found</div>';
+            }
         }
     } catch (error) {
-        console.error('Error loading page:', error);
-        mainContent.innerHTML = '<div class="p-4 text-center text-gray-400">Page not found</div>';
+        console.error('Error in loadPage:', error);
+        mainContent.innerHTML = '<div class="p-4 text-center text-gray-400">Error loading page</div>';
     }
-    
-    // Reset forex page flag if required elsewhere
-    window.forexGlobalState.wasOnForexPage = false;
 }
 
 function handleTabs(clickedTab) {
@@ -74,10 +80,9 @@ window.addEventListener('load', () => {
         item.classList.remove('text-blue-500', 'bg-gray-700');
         item.classList.add('text-gray-400');
     });
-
-    const mainContent = document.getElementById('main-content');
-    mainContent.innerHTML = document.getElementById('welcome-template').innerHTML;
+    loadWelcomeTemplate();
 });
 
-// Export if needed
+// Export functions
 window.loadPage = loadPage;
+window.handleNavigation = handleNavigation;
