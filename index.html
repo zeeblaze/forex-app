@@ -8,7 +8,6 @@
     <style>
         body {
             max-width: 640px;
-            height: 100vh;
             height: 100dvh; /* Add dynamic viewport height */
             margin: 0 auto;
             position: relative;
@@ -42,11 +41,10 @@
             left: 50%;
             bottom: 20px; /* Change from -85px to fixed value */
             transform: translate(-50%, 0); /* Remove Y translation */
-            width: 80%;
+            width: 85%;
             z-index: 1;
             backdrop-filter: blur(10px);
-            background-color: rgba(55, 65, 81, 0.8);
-            border-radius: 1rem;
+            background-color: #1f2937; /* Match nav bar color */
             padding: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -107,6 +105,21 @@
                 transform: scaleX(1);
             }
         }
+        .input-container {
+            width: 48%; /* Ensure both containers take up equal width */
+        }
+        .input-container p {
+            margin: 0;
+        }
+        .input-container div {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #19212c; /* Tailwind's bg-gray-800 */
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -136,34 +149,34 @@
 
             <!-- Trading Actions Overlay -->
             <div class="trading-actions">
-                <div class="flex justify-between items-center mb-4">
-                    <div id="timeContainer" class="cursor-pointer">
+                <div class="flex justify-between items-center">
+                    <div id="timeContainer" class="input-container cursor-pointer">
                         <p class="text-sm text-gray-400">Time</p>
-                        <div class="bg-gray-800 p-2 rounded-lg flex items-center space-x-2">
+                        <div>
                             <span id="timeDisplay" class="text-white">00:01:00</span>
                             <span class="text-white">⏰</span>
                         </div>
                     </div>
-                    <div id="amountContainer" class="cursor-pointer">
+                    <div id="amountContainer" class="input-container cursor-pointer">
                         <p class="text-sm text-gray-400">Amount</p>
-                        <div class="bg-gray-800 p-2 rounded-lg flex items-center space-x-2">
+                        <div>
                             <span id="amountDisplay" class="text-white">10</span>
                             <span class="text-white">💲</span>
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between text-green-400 text-lg font-semibold mb-4">
+                <div class="flex justify-between text-green-400 text-lg font-semibold">
                     <p>Payout<br><span class="text-white text-sm">$16.20</span></p>
                     <p>+62%</p>
                     <p>Profit<br><span class="text-white text-sm">+$6.20</span></p>
                 </div>
                 <div class="flex space-x-4">
                     <button class="bg-green-600 text-white py-2 flex-1 rounded-lg flex items-center justify-center space-x-2">
-                        <span>➡️</span>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="none"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16 14C16 14.5523 15.5523 15 15 15C14.4477 15 14 14.5523 14 14V11.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L12.5858 10H10C9.44772 10 9 9.55228 9 9C9 8.44772 9.44772 8 10 8H14.6717C15.4054 8 16 8.59489 16 9.32837V14Z" fill="#015b17"></path> </g></svg>
                         <span>BUY</span>
                     </button>
                     <button class="bg-red-600 text-white py-2 flex-1 rounded-lg flex items-center justify-center space-x-2">
-                        <span>➡️</span>
+                        <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="none"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM9.70711 8.29289C9.31658 7.90237 8.68342 7.90237 8.29289 8.29289C7.90237 8.68342 7.90237 9.31658 8.29289 9.70711L12.5858 14H10C9.44772 14 9 14.4477 9 15C9 15.5523 9.44772 16 10 16H14.6717C15.4054 16 16 15.4051 16 14.6716V10C16 9.44772 15.5523 9 15 9C14.4477 9 14 9.44772 14 10V12.5858L9.70711 8.29289Z" fill="#990000"></path> </g></svg>
                         <span>SELL</span>
                     </button>
                 </div>
