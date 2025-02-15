@@ -21,7 +21,8 @@
         }
         #main-content {
             height: calc(100% - 120px);
-            overflow-y: auto;
+            overflow: hidden;
+            position: relative;
         }
         .chart-container {
             width: 100%;
@@ -35,6 +36,76 @@
             width: 100%;
             height: 100%;
         }
+        .trading-actions {
+            position: absolute;
+            left: 50%;
+            top: 73%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            background-color: rgba(55, 65, 81, 0.8);
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #calculatorModal, #timeModal {
+            z-index: 2;
+        }
+        .slider-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 5px;
+            background: #FF5252;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-left, .progress-right {
+            position: relative;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 3;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .progress-left {
+            margin-right: 10px;
+        }
+
+        .progress-right {
+            margin-left: 10px;
+        }
+
+        .slider-bar {
+            width: 100%;
+            height: 100%;
+            background: #4CAF50;
+            animation: progressAnimation 10s linear infinite;
+            transform-origin: left center;
+        }
+
+        @keyframes progressAnimation {
+            0% {
+                transform: scaleX(0);
+            }
+            100% {
+                transform: scaleX(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -47,15 +118,23 @@
 
     <!-- Replace welcome template with forex graph template -->
     <template id="welcome-template">
-        <div class="h-full flex flex-col mb-4 space-y-2">
-
-            <!-- Graph Canvas with fixed height -->
-            <div class="chart-container bg-gray-800/50 overflow-hidden">
+        <div class="h-full relative">
+            <!-- Full screen chart -->
+            <div class="chart-container">
                 <div id="chart"></div>
             </div>
 
-            <!-- Trading Actions -->
-            <div class="bg-gray-700 mx-10 p-2 rounded-lg">
+            <!-- Updated Slider Structure -->
+            <div class="slider-wrapper">
+                <span class="progress-left">0%</span>
+                <div class="slider-container">
+                    <div class="slider-bar"></div>
+                </div>
+                <span class="progress-right">100%</span>
+            </div>
+
+            <!-- Trading Actions Overlay -->
+            <div class="trading-actions">
                 <div class="flex justify-between items-center mb-4">
                     <div id="timeContainer" class="cursor-pointer">
                         <p class="text-sm text-gray-400">Time</p>
@@ -170,6 +249,8 @@
                 initTimeModal();
                 // Bind Calculator Modal events
                 initCalcModal();
+                // Initialize counter after template is loaded
+                updateCounter();
             } catch (error) {
                 console.error('Error initializing components:', error);
             }
@@ -249,6 +330,18 @@
                 amountDisplay.textContent = calcDisplay.value || "0";
                 calculatorModal.classList.add('hidden');
             });
+        }
+
+        function updateCounter() {
+            const leftCounter = document.querySelector('.progress-left');
+            const rightCounter = document.querySelector('.progress-right');
+            let count = 0;
+            
+            setInterval(() => {
+                count = count >= 100 ? 0 : count + 1;
+                leftCounter.textContent = `${count}%`;
+                rightCounter.textContent = `${100 - count}%`;
+            }, 100); // Updates every 100ms for a total of 10 seconds (100 steps)
         }
 
         // Start initialization
