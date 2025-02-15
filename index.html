@@ -9,18 +9,19 @@
         body {
             max-width: 640px;
             height: 100vh;
+            height: 100dvh; /* Add dynamic viewport height */
             margin: 0 auto;
             position: relative;
             overflow: hidden;
         }
         .mobile-container {
             width: 100%;
-            height: 90%;
+            height: 100%; /* Change from 90% to 100% */
             overflow: hidden;
             position: relative;
         }
         #main-content {
-            height: calc(100% - 120px);
+            height: calc(100% - 130px); /* Adjust calculation for nav heights */
             overflow: hidden;
             position: relative;
         }
@@ -39,8 +40,8 @@
         .trading-actions {
             position: absolute;
             left: 50%;
-            bottom: -85px;
-            transform: translate(-50%, -50%);
+            bottom: 20px; /* Change from -85px to fixed value */
+            transform: translate(-50%, 0); /* Remove Y translation */
             width: 80%;
             z-index: 1;
             backdrop-filter: blur(10px);
@@ -55,8 +56,8 @@
         .slider-wrapper {
             position: absolute;
             left: 50%;
-            bottom: 240px;
-            transform: translate(-50%, -50%);
+            bottom: 180px; /* Adjust position relative to trading actions */
+            transform: translate(-50%, 0);
             width: 80%;
             display: flex;
             align-items: center;

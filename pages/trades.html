@@ -1,14 +1,16 @@
-<div class="p-4 h-full overflow-y-auto pb-20">
-    <h1 class="text-lg font-medium mb-4">Trades</h1>
-    
-    <!-- Tabs -->
-    <div class="flex p-1 space-x-2 mb-6 bg-gray-800/50 rounded-lg">
-        <button onclick="handleTabs(this)" class="tab-btn flex-1 bg-blue-600 py-2.5 rounded-md text-sm font-medium transition-colors duration-200">Opened</button>
-        <button onclick="handleTabs(this)" class="tab-btn flex-1 bg-gray-800 py-2.5 rounded-md text-sm font-medium transition-colors duration-200">Closed</button>
-    </div>
+<div class="h-full flex flex-col">
+    <div class="p-4 flex-1 overflow-y-auto pb-20">
+        <h1 class="text-lg font-medium mb-4">Trades</h1>
+        
+        <!-- Tabs -->
+        <div class="flex p-1 space-x-2 mb-6 bg-gray-800/50 rounded-lg">
+            <button onclick="handleTabs(this)" class="tab-btn flex-1 bg-blue-600 py-2.5 rounded-md text-sm font-medium transition-colors duration-200">Opened</button>
+            <button onclick="handleTabs(this)" class="tab-btn flex-1 bg-gray-800 py-2.5 rounded-md text-sm font-medium transition-colors duration-200">Closed</button>
+        </div>
 
-    <!-- No Trades Message -->
-    <div class="text-center text-gray-400 mt-12 text-sm">
-        No opened trades
+        <!-- No Trades Message -->
+        <div class="text-center text-gray-400 mt-12 text-sm">
+            No opened trades
+        </div>
     </div>
 </div>
