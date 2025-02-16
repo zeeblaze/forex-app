@@ -330,15 +330,17 @@
     <script src="js/navigation.js"></script>
     <script src="js/dropdown.js"></script>
     <script src="js/account-dropdown.js"></script>
+    <script src="js/wallet-modal.js"></script>
     <script>
-
-        // Update initialization function to include chart
         async function initializeComponents() {
             try {
                 // Load top nav
                 const topNavResponse = await fetch('components/top-nav.html');
                 const topNavHtml = await topNavResponse.text();
                 document.getElementById('top-nav').innerHTML = topNavHtml;
+
+                // Initialize wallet modal after top nav is loaded
+                window.initializeWalletModal();
 
                 // Load bottom nav
                 const bottomNavResponse = await fetch('components/bottom-nav.html');
