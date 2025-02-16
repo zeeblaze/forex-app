@@ -1,12 +1,12 @@
 <div class="p-4 h-full overflow-y-auto">
     <h2 class="text-lg font-semibold mb-4">Pending Trades</h2>
     <div class="flex space-x-2 mb-4">
-        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">By the time</button>
-        <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">By the Price</button>
-        <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">Current</button>
+        <button onclick="switchTab('bythetime')" class="tab-btn p-2 bg-blue-600 text-white rounded-lg">By the time</button>
+        <button onclick="switchTab('bytheprice')" class="tab-btn p-2 bg-gray-800 hover:bg-gray-700 rounded-lg">By the Price</button>
+        <button onclick="switchTab('current')" class="tab-btn p-2 bg-gray-800 hover:bg-gray-700 rounded-lg">Current</button>
     </div>
     
-    <div class="space-y-4">
+    <div id="bythetime" class="content">
         <div>
             <label class="block text-gray-400 mb-1 text-sm">Asset</label>
             <select class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
@@ -43,5 +43,52 @@
         </div>
 
         <button class="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg font-medium mt-4">Place Trade</button>
+    </div>
+
+    <div id="bytheprice" class="content hidden">
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Asset</label>
+            <select class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                <option>EUR/JPY</option>
+                <option>GBP/OTC</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Open Price</label>
+            <input type="text" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="109.5">
+            <p class="text-gray-500 text-xs mt-1">Current price: 123.45</p>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Payout</label>
+            <div class="relative">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 pr-8" value="60" min="0" max="100">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Timeframe</label>
+            <div class="flex space-x-2">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="0">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="1">
+                <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="0">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-gray-400 mb-1 text-sm">Amount</label>
+            <input type="number" class="w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="1500">
+        </div>
+
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg font-medium mt-4">Place Trade</button>
+    </div>
+
+    <div id="current" class="content hidden p-2">
+        <h2 class="text-sm font-semibold text-white mb-2">All postponed trades</h2>
+        <div class="bg-gray-700 text-white p-3 rounded-lg border border-gray-600 text-center">
+            There are no pending trades
+        </div>
     </div>
 </div>

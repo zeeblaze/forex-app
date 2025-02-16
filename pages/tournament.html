@@ -1,33 +1,41 @@
 <div class="p-4 h-full overflow-y-auto">
     <!-- Header -->
-    <div class="flex justify-between items-center mb-6">
-        <button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 transition rounded-lg flex items-center gap-2">
-            <span>All Tournaments</span>
-        </button>
-        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 transition rounded-lg">Statistics</button>
+    <div class="flex w-full h-12 justify-between space-x-4 items-center mb-6">
+        <button onclick="switchTab('all-tournaments')" class="tab-btn justify-center center w-full h-full bg-blue-600 hover:bg-blue-700 transition rounded-lg flex items-center gap-2">All Tournaments</button>
+        <button onclick="switchTab('tournament-statistics')" class="tab-btn w-full h-full p-2 bg-gray-700 hover:bg-gray-600 transition rounded-lg">Statistics</button>
     </div>
 
+    <div id="all-tournaments" class="content">
     <!-- Tournament Card: Day Off -->
-    <div class="bg-gray-800 p-5 rounded-lg mb-4 shadow-lg border border-gray-700">
-        <div class="flex justify-between items-center mb-3">
-            <h2 class="text-xl font-semibold">Day off</h2>
-            <img src="https://via.placeholder.com/50" alt="Trophy" class="w-12 h-12">
+        <div class="bg-gray-800 p-5 rounded-lg mb-4 shadow-lg border border-gray-700">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-xl font-semibold">Day off</h2>
+                <img src="https://via.placeholder.com/50" alt="Trophy" class="w-12 h-12">
+            </div>
+            <p class="text-gray-400">Prize fund: <span class="text-white font-bold">₦375,000</span></p>
+            <p class="text-gray-400">Participation fee: <span class="text-white">Free</span></p>
+            <p class="text-gray-400">Ends in: <span class="text-white">02:21:49</span></p>
+            <button class="w-full mt-4 bg-green-600 hover:bg-green-700 transition py-2 rounded-lg text-lg font-medium">Join</button>
         </div>
-        <p class="text-gray-400">Prize fund: <span class="text-white font-bold">₦375,000</span></p>
-        <p class="text-gray-400">Participation fee: <span class="text-white">Free</span></p>
-        <p class="text-gray-400">Ends in: <span class="text-white">02:21:49</span></p>
-        <button class="w-full mt-4 bg-green-600 hover:bg-green-700 transition py-2 rounded-lg text-lg font-medium">Join</button>
-    </div>
 
-    <!-- Tournament Card: Hour Play -->
-    <div class="bg-gray-800 p-5 rounded-lg shadow-lg border border-gray-700">
-        <div class="flex justify-between items-center mb-3">
-            <h2 class="text-xl font-semibold">Hour play</h2>
-            <img src="https://via.placeholder.com/50" alt="Clock" class="w-12 h-12">
+        <!-- Tournament Card: Hour Play -->
+        <div class="bg-gray-800 p-5 rounded-lg shadow-lg border border-gray-700">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-xl font-semibold">Hour play</h2>
+                <img src="https://via.placeholder.com/50" alt="Clock" class="w-12 h-12">
+            </div>
+            <p class="text-gray-400">Prize fund: <span class="text-white font-bold">₦150,000</span></p>
+            <p class="text-gray-400">Participation fee: <span class="text-white">₦1,500</span></p>
+            <p class="text-gray-400">Starts in: <span class="text-white">00:21:49</span></p>
+            <button class="w-full mt-4 bg-green-600 hover:bg-green-700 transition py-2 rounded-lg text-lg font-medium">Join</button>
         </div>
-        <p class="text-gray-400">Prize fund: <span class="text-white font-bold">₦150,000</span></p>
-        <p class="text-gray-400">Participation fee: <span class="text-white">₦1,500</span></p>
-        <p class="text-gray-400">Starts in: <span class="text-white">00:21:49</span></p>
-        <button class="w-full mt-4 bg-green-600 hover:bg-green-700 transition py-2 rounded-lg text-lg font-medium">Join</button>
+    </div>
+    <div id="tournament-statistics" class="content hidden p-2 w-60">
+        <h2 class="text-sm font-semibold text-white mb-2">Tournament Stats</h2>
+        <div class="space-y-2 text-gray-300">
+            <p class="flex justify-between"><span>Tournaments won:</span> <span class="text-white">0</span></p>
+            <p class="flex justify-between"><span>Total prize money:</span> <span class="text-white">₦0</span></p>
+            <p class="flex justify-between"><span>Largest prize:</span> <span class="text-white">₦0</span></p>
+        </div>
     </div>
 </div>

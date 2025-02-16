@@ -1,64 +1,79 @@
 <div class="p-4 h-full overflow-y-auto">
     <!-- Express Trades Section -->
     <div class="mb-4 text-lg font-semibold">Express Trades</div>
-    <div class="flex space-x-2 mt-2">
-        <button class="flex-1 py-2 bg-blue-600 rounded-lg text-white">New</button>
-        <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">Opened</button>
-        <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">Closed</button>
+    <div class="flex justify-between space-x-2 mt-2 h-12">
+        <button onclick="switchTab('express-new')" class="tab-btn w-full bg-blue-600 rounded-lg text-white">New</button>
+        <button onclick="switchTab('express-opened')" class="tab-btn w-full bg-gray-700 rounded-lg text-white">Opened</button>
+        <button onclick="switchTab('express-closed')" class="tab-btn w-full bg-gray-700 rounded-lg text-white">Closed</button>
     </div>
-    <div class="bg-red-600 text-white text-sm p-2 rounded-lg mt-3">
-        ⚠ Express-orders are available starting from the "Master" profile level.
-    </div>
-    <button class="w-full py-2 bg-green-600 rounded-lg text-white mt-3">Acquire the profile level</button>
-    
-    <div class="mt-4 text-sm text-gray-400">Select assets</div>
-    <div class="flex space-x-2 mt-2">
-        <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">💲</button>
-        <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">💧</button>
-        <button class="flex-1 py-2 bg-blue-600 rounded-lg text-white">📈</button>
-        <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">🔍</button>
-    </div>
-    
-    <div class="mt-4 space-y-3">
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
-            <div>
-                <div class="font-bold">APPLE OTC <span class="text-green-400">+92%</span></div>
-                <div class="text-xs text-gray-400">M1 00:56</div>
+    <div id="express-new" class="content">
+        <div class="bg-red-600 text-white text-sm p-2 rounded-lg mt-3">
+            ⚠ Express-orders are available starting from the "Master" profile level.
+        </div>
+        <button class="w-full py-2 bg-green-600 rounded-lg text-white mt-3">Acquire the profile level</button>
+        
+        <div class="mt-4 text-sm text-gray-400">Select assets</div>
+        <div class="flex space-x-2 mt-2">
+            <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">💲</button>
+            <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">💧</button>
+            <button class="flex-1 py-2 bg-blue-600 rounded-lg text-white">📈</button>
+            <button class="flex-1 py-2 bg-gray-700 rounded-lg text-white">🔍</button>
+        </div>
+        
+        <div class="mt-4 space-y-3">
+            <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
+                <div>
+                    <div class="font-bold">APPLE OTC <span class="text-green-400">+92%</span></div>
+                    <div class="text-xs text-gray-400">M1 00:56</div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
+                    <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
+                </div>
             </div>
-            <div class="flex space-x-2">
-                <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
-                <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
+            <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
+                <div>
+                    <div class="font-bold">INTEL OTC <span class="text-green-400">+92%</span></div>
+                    <div class="text-xs text-gray-400">M1 00:56</div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
+                    <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
+                </div>
+            </div>
+            <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
+                <div>
+                    <div class="font-bold">MCDONALD'S OTC <span class="text-green-400">+92%</span></div>
+                    <div class="text-xs text-gray-400">M1 00:56</div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
+                    <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
+                </div>
+            </div>
+            <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
+                <div>
+                    <div class="font-bold">MICROSOFT OTC <span class="text-green-400">+92%</span></div>
+                    <div class="text-xs text-gray-400">M1 00:56</div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
+                    <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
+                </div>
             </div>
         </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
-            <div>
-                <div class="font-bold">INTEL OTC <span class="text-green-400">+92%</span></div>
-                <div class="text-xs text-gray-400">M1 00:56</div>
-            </div>
-            <div class="flex space-x-2">
-                <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
-                <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
-            </div>
+    </div>
+    <div id="express-opened" class="content hidden mt-6">
+        <div class="bg-blue-900 text-blue-300 p-3 rounded-lg border border-blue-500 text-center">
+            <p>ℹ️ No opened express trades.</p>
         </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
-            <div>
-                <div class="font-bold">MCDONALD'S OTC <span class="text-green-400">+92%</span></div>
-                <div class="text-xs text-gray-400">M1 00:56</div>
-            </div>
-            <div class="flex space-x-2">
-                <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
-                <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
-            </div>
-        </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center justify-between">
-            <div>
-                <div class="font-bold">MICROSOFT OTC <span class="text-green-400">+92%</span></div>
-                <div class="text-xs text-gray-400">M1 00:56</div>
-            </div>
-            <div class="flex space-x-2">
-                <button class="w-8 h-8 bg-green-600 rounded-lg">⬆</button>
-                <button class="w-8 h-8 bg-red-600 rounded-lg">⬇</button>
-            </div>
+        <button class="w-full mt-4 px-4 py-2 bg-gray-800 border border-green-500 hover:bg-green-800 text-white font-semibold rounded-lg">
+            Create new express
+        </button>
+    </div>
+    <div id="express-closed" class="content hidden mt-6">
+        <div class="bg-blue-900 text-blue-300 p-3 rounded-lg border border-blue-500 text-center">
+            <p>ℹ️ No closed express trades.</p>
         </div>
     </div>
 </div>

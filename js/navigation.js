@@ -62,18 +62,6 @@ async function loadPage(pageName) {
     }
 }
 
-function handleTabs(clickedTab) {
-    const tabs = document.querySelectorAll('.tab-btn');
-    
-    tabs.forEach(tab => {
-        tab.classList.remove('bg-blue-600');
-        tab.classList.add('bg-gray-800');
-    });
-
-    clickedTab.classList.remove('bg-gray-800');
-    clickedTab.classList.add('bg-blue-600');
-}
-
 // Reset state when page loads
 window.addEventListener('load', () => {
     document.querySelectorAll('.nav-item').forEach(item => {
