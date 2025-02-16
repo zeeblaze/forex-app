@@ -1,4 +1,4 @@
-<nav class="flex justify-between items-center p-4 bg-gray-900/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
+<nav class="flex justify-between items-center p-4 bg-gray-900/95 backdrop-blur-sm relative z-10" role="navigation" aria-label="Main navigation">
     <div class="flex items-center space-x-3">
         <!-- Profile Icon -->
         <button class="relative" aria-label="Profile status">
@@ -101,10 +101,10 @@
 </nav>
 
 <!-- Modal Background Overlay -->
-<div id="topUpModalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+<div id="topUpModalOverlay" class="fixed inset-0 bg-black/50 hidden z-[100]"></div>
 
 <!-- Top Up Modal -->
-<div id="topUpModal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-gray-800 shadow-lg rounded-lg p-6 hidden z-50">
+<div id="topUpModal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-gray-800 shadow-lg rounded-lg p-6 hidden z-[101]">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-lg font-semibold text-white">Quick account top-up</h2>
         <button id="closeTopUpModal" class="text-gray-400 hover:text-gray-200">
@@ -140,29 +140,39 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const walletButton = document.getElementById('walletButton');
-        const topUpModal = document.getElementById('topUpModal');
-        const topUpModalOverlay = document.getElementById('topUpModalOverlay');
-        const closeTopUpModal = document.getElementById('closeTopUpModal');
+document.addEventListener('DOMContentLoaded', function() {
+    const walletButton = document.getElementById('walletButton');
+    const topUpModal = document.getElementById('topUpModal');
+    const topUpModalOverlay = document.getElementById('topUpModalOverlay');
+    const closeTopUpModal = document.getElementById('closeTopUpModal');
 
-        if (walletButton && topUpModal && topUpModalOverlay && closeTopUpModal) {
-            // Show modal
-            walletButton.addEventListener('click', () => {
-                topUpModal.classList.remove('hidden');
-                topUpModalOverlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
+    if (!walletButton || !topUpModal || !topUpModalOverlay || !closeTopUpModal) {
+        console.error('One or more elements not found');
+        return;
+    }
 
-            // Hide modal
-            const hideModal = () => {
-                topUpModal.classList.add('hidden');
-                topUpModalOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            };
-
-            closeTopUpModal.addEventListener('click', hideModal);
-            topUpModalOverlay.addEventListener('click', hideModal);
-        }
+    // Show modal
+    walletButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        topUpModal.classList.remove('hidden');
+        topUpModalOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
     });
+
+    // Hide modal
+    const hideModal = () => {
+        topUpModal.classList.add('hidden');
+        topUpModalOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    };
+
+    closeTopUpModal.addEventListener('click', hideModal);
+    topUpModalOverlay.addEventListener('click', hideModal);
+
+    // Prevent modal from closing when clicking inside it
+    topUpModal.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+});
 </script>
