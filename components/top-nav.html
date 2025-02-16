@@ -88,12 +88,77 @@
                 </div>
             </div>
         </div>
-        <button class="bg-green-600 p-2 rounded-md hover:bg-green-700 transition-colors" aria-label="Open wallet">
+        <button class="bg-green-600 p-2 rounded-md hover:bg-green-700 transition-colors" 
+                aria-label="Open wallet"
+                id="walletButton">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 0V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10h10"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 14h10"></path>
             </svg>
         </button>
+
+        <!-- Modal Background Overlay -->
+        <div id="topUpModalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+        <!-- Top Up Modal -->
+        <div id="topUpModal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-gray-800 shadow-lg rounded-lg p-6 hidden z-50">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">Quick account top-up</h2>
+                <button id="closeTopUpModal" class="text-gray-400 hover:text-gray-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <p class="text-gray-400 text-sm mb-4">Make a deposit to start earning</p>
+            
+            <label class="block text-sm font-medium text-gray-200">Payment Method</label>
+            <div class="relative mt-1">
+                <select class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 text-gray-200 focus:ring focus:ring-blue-500">
+                    <option>Tether (USDT) TRC-20</option>
+                </select>
+            </div>
+            
+            <label class="block text-sm font-medium text-gray-200 mt-4">Amount</label>
+            <div class="relative mt-1 flex items-center">
+                <input type="number" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 text-gray-200 focus:ring focus:ring-blue-500" value="45400">
+                <span class="absolute right-3 text-gray-400">₦</span>
+            </div>
+            
+            <div class="flex items-center mt-4">
+                <input type="checkbox" id="promo" class="w-4 h-4 bg-gray-700 border-gray-600 rounded">
+                <label for="promo" class="ml-2 text-sm text-gray-200">I have a promo code</label>
+            </div>
+            
+            <button class="w-full bg-green-600 text-white py-2 rounded-md mt-4 hover:bg-green-700 transition">
+                Continue and pay ₦45,400
+            </button>
+        </div>
     </div>
 </nav>
+
+<script>
+    const walletButton = document.getElementById('walletButton');
+    const topUpModal = document.getElementById('topUpModal');
+    const topUpModalOverlay = document.getElementById('topUpModalOverlay');
+    const closeTopUpModal = document.getElementById('closeTopUpModal');
+
+    // Show modal
+    walletButton.addEventListener('click', () => {
+        topUpModal.classList.remove('hidden');
+        topUpModalOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+
+    // Hide modal
+    const hideModal = () => {
+        topUpModal.classList.add('hidden');
+        topUpModalOverlay.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    closeTopUpModal.addEventListener('click', hideModal);
+    topUpModalOverlay.addEventListener('click', hideModal);
+</script>
